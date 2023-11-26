@@ -47,37 +47,37 @@
     "id": 6,
     "name": "Twilio Account_SID & Secret Key",
     "args": ["sid","token"],
-    "command": "curl -s -X GET 'https://api.twilio.com/2010-04-01/Accounts.json' -u $sid:$token | jq ."
+    "command": "curl -s -X GET 'https://api.twilio.com/2010-04-01/Accounts.json' -u $sid:$token | ../exes/jq ."
   },
   {
     "id": 7,
     "name": "Twitter API key & Secret",
     "args": ["key","secret"],
-    "command": "bearer=$(curl -s -u '$key:$secret' --data 'grant_type=client_credentials' 'https://api.twitter.com/oauth2/token' | cut -d '\"' -f 8 ) && curl -s --request GET --url https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json --header 'authorization: Bearer '$bearer'' | jq ."
+    "command": "bearer=$(curl -s -u '$key:$secret' --data 'grant_type=client_credentials' 'https://api.twitter.com/oauth2/token' | cut -d '\"' -f 8 ) && curl -s --request GET --url https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json --header 'authorization: Bearer '$bearer'' | ../exes/jq ."
   },
   {
     "id": 8,
     "name": "Twitter Bearer/Auth Token",
     "args": ["token"],
-    "command": "curl -s --request GET --url https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json --header 'authorization: Bearer $token' | jq ."
+    "command": "curl -s --request GET --url https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json --header 'authorization: Bearer $token' | ../exes/jq ."
   },
   {
     "id": 9,
     "name": "Hubspot API key",
     "args": ["key"],
-    "command": "curl -s https://api.hubapi.com/owners/v2/owners?hapikey=$key | jq . && curl -s https://api.hubapi.com/contacts/v1/lists/all/contacts/all?hapikey=$key | jq ."
+    "command": "curl -s https://api.hubapi.com/owners/v2/owners?hapikey=$key | jq . && curl -s https://api.hubapi.com/contacts/v1/lists/all/contacts/all?hapikey=$key | ../exes/jq ."
   },
   {
     "id": 10,
     "name": "Deviant Art Client ID & Secret key",
     "args": ["id","key"],
-    "command": "curl -s https://www.deviantart.com/oauth2/token -d grant_type=client_credentials -d client_id=$id -d client_secret=$key | jq ."
+    "command": "curl -s https://www.deviantart.com/oauth2/token -d grant_type=client_credentials -d client_id=$id -d client_secret=$key | ../exes/jq ."
   },
   {
     "id": 11,
     "name": "Validation of Deviant Art Token",
     "args": ["token"],
-    "command": "curl -s https://www.deviantart.com/api/v1/oauth2/placebo -d access_token=$token | jq ."
+    "command": "curl -s https://www.deviantart.com/api/v1/oauth2/placebo -d access_token=$token | ../exes/jq ."
   },
   {
     "id": 12,
@@ -89,13 +89,13 @@
     "id": 13,
     "name": "SendGrid API Token",
     "args": ["token"],
-    "command": "curl -s -X GET \"https://api.sendgrid.com/v3/scopes\" -H \"Authorization: Bearer $token\" -H \"Content-Type: application/json\" | jq ."
+    "command": "curl -s -X GET \"https://api.sendgrid.com/v3/scopes\" -H \"Authorization: Bearer $token\" -H \"Content-Type: application/json\" | ../exes/jq ."
   },
   {
     "id": 14,
     "name": "Square Auth Token",
     "args": ["auth_token"],
-    "command": "curl -s https://connect.squareup.com/v2/locations -H \"Authorization: Bearer $auth_token\" | jq ."
+    "command": "curl -s https://connect.squareup.com/v2/locations -H \"Authorization: Bearer $auth_token\" | ../exes/jq ."
   },
   {
     "id": 15,
@@ -113,7 +113,7 @@
     "id": 17,
     "name": "MailGun Private Key",
     "args": ["private_key"],
-    "command": "curl -s --user 'api:$private_key' \"https://api.mailgun.net/v3/domains\" | jq ."
+    "command": "curl -s --user 'api:$private_key' \"https://api.mailgun.net/v3/domains\" | ../exes/jq ."
   },
   {
     "id": 18,
@@ -131,13 +131,13 @@
     "id": 20,
     "name": "Microsoft Azure Client ID, secret & Tenant ID",
     "args": ["id","secret","tenant"],
-    "command": "curl -s -X POST -H \"Content-Type: application/x-www-form-urlencoded\" -d 'client_id=$id&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=$secret&grant_type=client_credentials' 'https://login.microsoftonline.com/$tenant/oauth2/v2.0/token' | jq ."
+    "command": "curl -s -X POST -H \"Content-Type: application/x-www-form-urlencoded\" -d 'client_id=$id&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=$secret&grant_type=client_credentials' 'https://login.microsoftonline.com/$tenant/oauth2/v2.0/token' | ../exes/jq ."
   },
   {
     "id": 21,
     "name": "Mapbox API key",
     "args": ["key"],
-    "command": "curl -s \"https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=$key\" | jq ."
+    "command": "curl -s \"https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=$key\" | ../exes/jq ."
   },
   {
     "id": 22,
@@ -179,13 +179,13 @@
     "id": 28,
     "name": "Branch.io Key & secret",
     "args": ["key","secret"],
-    "command": "curl -s https://api2.branch.io/v1/app/$key?branch_secret=$secret | jq ."
+    "command": "curl -s https://api2.branch.io/v1/app/$key?branch_secret=$secret | ../exes/jq ."
   },
   {
     "id": 29,
     "name": "bit.ly Access Token",
     "args": ["token"],
-    "command": "curl -s https://api-ssl.bitly.com/v3/shorten?access_token=$token | jq ."
+    "command": "curl -s https://api-ssl.bitly.com/v3/shorten?access_token=$token | ../exes/jq ."
   },
   {
     "id": 30,
@@ -197,7 +197,7 @@
     "id": 31,
     "name": "Asana Access Token/Bearer Token",
     "args": ["token"],
-    "command": "curl -s -H \"Authorization: Bearer $token\" https://app.asana.com/api/1.0/users/me | jq ."
+    "command": "curl -s -H \"Authorization: Bearer $token\" https://app.asana.com/api/1.0/users/me | ../exes/jq ."
   },
   {
     "id": 32,
@@ -215,13 +215,13 @@
     "id": 34,
     "name": "WPEngine API key & Account Name",
     "args": ["key","name"],
-    "command": "curl -s \"https://api.wpengine.com/1.2/?method=site&account_name=$name&wpe_apikey=$key\" | jq ."
+    "command": "curl -s \"https://api.wpengine.com/1.2/?method=site&account_name=$name&wpe_apikey=$key\" | ../exes/jq ."
   },
   {
     "id": 35,
     "name": "DataDog API Key & Application Key",
     "args": ["api_key","app_key"],
-    "command": "curl -s \"https://api.datadoghq.com/api/v1/dashboard?api_key=$api_key&application_key=$app_key\" | jq ."
+    "command": "curl -s \"https://api.datadoghq.com/api/v1/dashboard?api_key=$api_key&application_key=$app_key\" | ../exes/jq ."
   },
   {
     "id": 36,
@@ -233,7 +233,7 @@
     "id": 37,
     "name": "WakaTime API Key",
     "args": ["key"],
-    "command": "curl -s \"https://wakatime.com/api/v1/users/current/projects/?api_key=$key\" | jq ."
+    "command": "curl -s \"https://wakatime.com/api/v1/users/current/projects/?api_key=$key\" | ../exes/jq ."
   },
   {
     "id": 38,
@@ -245,7 +245,7 @@
     "id": 39,
     "name": "Instagram Access Token",
     "args": ["token"],
-    "command": "curl -s https://api.instagram.com/v1/users/self/?access_token=$token | jq ."
+    "command": "curl -s https://api.instagram.com/v1/users/self/?access_token=$token | ../exes/jq ."
   },
   {
     "id": 40,
@@ -257,19 +257,19 @@
     "id": 41,
     "name": "Stripe Live Token",
     "args": ["token"],
-    "command": "curl -s https://api.stripe.com/v1/charges -u $token: | jq ."
+    "command": "curl -s https://api.stripe.com/v1/charges -u $token: | ../exes/jq ."
   },
   {
     "id": 42,
     "name": "CicrcleCI Access Token",
     "args": ["token"],
-    "command": "curl -s https://circleci.com/api/v1.1/me?circle-token=$token | jq ."
+    "command": "curl -s https://circleci.com/api/v1.1/me?circle-token=$token | ../exes/jq ."
   },
   {
     "id": 43,
     "name": "Razorpay API Key ID & Secret Key",
     "args": ["key","secret"],
-    "command": "curl -s -u $key:$secret https://api.razorpay.com/v1/payments | jq ."
+    "command": "curl -s -u $key:$secret https://api.razorpay.com/v1/payments | ../exes/jq ."
   },
   {
     "id": 44,
@@ -281,6 +281,6 @@
     "id":45,
     "name":"IPstack",
     "args":["key"],
-    "command":"curl -s https://api.ipstack.com/check?access_key=$key | jq ."
+    "command":"curl -s https://api.ipstack.com/check?access_key=$key | ../exes/jq ."
    }
   ]

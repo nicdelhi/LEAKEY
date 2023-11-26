@@ -11,7 +11,7 @@ red='\033[0;31m'
 blue='\033[0;34m'
 green='\033[0;32m'
 reset='\033[0m'
-sign_dir=~/.leakey/signatures.json
+sign_dir=./signatures.json
 
 #########################################################
 #                   Logo                                #
@@ -40,20 +40,20 @@ main(){
     then
     declare -A x1=()
     printf "\n$bblue═════════$bred Leaks Menu$bblue ═════════\n$reset"
-    cat $sign_dir|jq -r '.[] | "\(.id) - \(.name)"'
+    cat $sign_dir|../exes/jq -r '.[] | "\(.id) - \(.name)"'
     printf "\n${bblue}Enter Choice :$bred"
     read choice
     printf "$blue═══════════════════════════════════════"
-    if [[ $choice != "" ]] && [[ $choice =~ ^[-+]?[0-9]+$ ]] && [ $choice -lt $(cat $sign_dir|jq length) ]
+    if [[ $choice != "" ]] && [[ $choice =~ ^[-+]?[0-9]+$ ]] && [ $choice -lt $(cat $sign_dir|../exes/jq length) ]
     then
-    select_choice=$(cat $sign_dir|jq -r --arg choice1 "$choice"  '.['$choice']|.name')
+    select_choice=$(cat $sign_dir|../exes/jq -r --arg choice1 "$choice"  '.['$choice']|.name')
     printf "\n${bblue}Selected Leaks : $bred $select_choice $reset\n\n"
-    for i in $(cat $sign_dir|jq -r --arg choice1 "$choice"  '.['$choice']|.args[]')
+    for i in $(cat $sign_dir|../exes/jq -r --arg choice1 "$choice"  '.['$choice']|.args[]')
     do 
     read -rep "[ + ] Enter $i : " zz
     x1[$i]+=$zz
     done
-    cmd=$(cat $sign_dir|jq -r --arg choice1 "$choice" '.['$choice'] |.command')
+    cmd=$(cat $sign_dir|../exes/jq -r --arg choice1 "$choice" '.['$choice'] |.command')
     printf "$blue═══════════════════════════════════════\n"
     for i in ${!x1[@]}
     do
